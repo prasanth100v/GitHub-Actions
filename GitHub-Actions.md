@@ -7,3 +7,4 @@ Developers like it because they don’t need to learn a separate CI tool. YAML w
 ```
 .github/workflows/main.yml
 ```
+### Simple rule: Workflow has Jobs →→ Jobs have Steps →→ Steps run on Runners This is the heart of GitHub Actions.
