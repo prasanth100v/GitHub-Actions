@@ -1,3 +1,4 @@
+### GitHub Actions
 When developers push code or open a pull request, the pipeline runs automatically.
 Developers like it because the pipeline is written in simple YAML and is easy to understand and debug.
 Overall, GitHub Actions reduces maintenance work, improves security, and helps teams deliver faster with less effort.
