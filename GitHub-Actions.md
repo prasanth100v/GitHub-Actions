@@ -9,3 +9,9 @@ Developers like it because they don’t need to learn a separate CI tool. YAML w
 ```
 ### Simple rule: 
    Workflow has Jobs →→ Jobs have Steps →→ Steps run on Runners This is the heart of GitHub Actions.
+### Why teams like it
+
+Zero setup (already in GitHub)
+Huge marketplace of reusable actions
+Great for DevOps / Platform / SRE workflows
+Works nicely with Docker, Kubernetes, Terraform
