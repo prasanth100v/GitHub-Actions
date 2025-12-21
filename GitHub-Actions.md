@@ -18,3 +18,10 @@ Huge marketplace of reusable actions
 Great for DevOps / Platform / SRE workflows
 
 Works nicely with Docker, Kubernetes, Terraform
+### Runners & Execution
+What is a runner?
+
+A runner is the machine that executes jobs.
+
+GitHub-hosted (Ubuntu, Windows, macOS), 
+Self-hosted (EC2, on-prem, Kubernetes)
