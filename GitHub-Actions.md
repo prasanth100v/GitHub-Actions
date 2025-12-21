@@ -12,6 +12,9 @@ Developers like it because they don’t need to learn a separate CI tool. YAML w
 ### Why teams like it
 
 Zero setup (already in GitHub)
+
 Huge marketplace of reusable actions
+
 Great for DevOps / Platform / SRE workflows
+
 Works nicely with Docker, Kubernetes, Terraform
