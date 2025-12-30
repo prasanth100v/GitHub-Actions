@@ -46,3 +46,11 @@
 | **Composite Action**     | Multiple steps as one action           | Custom action                        |
 | **Marketplace**          | Public actions repository              | github.com/marketplace               |
 
+
+
+
+
+### 🔐 “GitHub Actions OIDC = keyless, token-based, secure authentication for CI/CD.”
+
+
+
