@@ -11,6 +11,16 @@
 
 
 
+In one project, CI costs were high due to frequent pushes. We optimized this by triggering workflows only on pull requests, cancelling older runs on new commits, and caching dependencies. As a result, we reduced GitHub Actions usage and improved pipeline speed.”
+
+
+
+
+
+
+
+
+
 
 
 
