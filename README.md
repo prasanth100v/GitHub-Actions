@@ -41,7 +41,7 @@
 | **steps context**        | Step outputs                           | `steps.build.outputs`                |
 | **outputs**              | Data passed between jobs               | Job → Job                            |
 | **concurrency**          | Prevent parallel runs                  | One deploy at a time                 |
-| **OIDC**                 | Secure auth without secrets            | AWS auth best practice               |
+| **OIDC**                 | Secure auth without secrets            | “OIDC = secure login without passwords.”  |
 | **Reusable Workflow**    | Workflow called by another             | DRY principle                        |
 | **Composite Action**     | Multiple steps as one action           | Custom action                        |
 | **Marketplace**          | Public actions repository              | github.com/marketplace               |
