@@ -37,7 +37,7 @@ cat ~/.ssh/id_ed25519.pub
 4. Title example: Ubuntu Laptop / Office Server
 5. Click Add SSH key
 ```
-##✅ Step 6: Test SSH connection
+## ✅ Step 6: Test SSH connection
 ```
 ssh -T git@github.com
 ```
@@ -46,7 +46,7 @@ Check current remote:
 ```
 git remote -v
 ```
-If HTTPS, change to SSH: **Copy ssh from Github**
+If HTTPS, change to SSH: 🔹 **Copy ssh from Github**
 ```
 git remote set-url origin git@github.com:prasanth100v/my-project.git
 ```
