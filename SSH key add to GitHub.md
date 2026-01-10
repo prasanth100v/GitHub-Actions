@@ -46,7 +46,7 @@ Check current remote:
 ```
 git remote -v
 ```
-If HTTPS, change to SSH: Copy ssh from Github
+If HTTPS, change to SSH: **Copy ssh from Github**
 ```
 git remote set-url origin git@github.com:prasanth100v/my-project.git
 ```
