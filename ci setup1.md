@@ -149,7 +149,15 @@ Start the VM
 
 ## ~~~~~~~~~~~~~~~~~~~~ 🌍 ~~~~~~~~~~~~~~~~~~~
 
-✅ Quick Diagnostic Commands for sonarqube
+## 🔎 Important Notes (Read this)
+### ❓ Why checkout again in sonarqube?
+> Each job runs in a fresh workspace, so you must: - uses: actions/checkout@v4
+
+### ❓ Do I need build artifacts for SonarQube?
+> ❌ No. SonarQube analyzes source code, not dist/.
+
+
+## ✅ Quick Diagnostic Commands for sonarqube
 ```
 docker ps
 docker logs sonarqube
@@ -157,7 +165,7 @@ ss -tulnp | grep 9000
 sysctl vm.max_map_count
 ```
 
-🧰 Common Commands
+## 🧰 Common Commands
 ```
 docker start sonarqube
 docker stop sonarqube
