@@ -22,6 +22,27 @@
             -Dsonar.exclusions=**/node_modules/**,**/dist/**
             -Dsonar.sourceEncoding=UTF-8
 ```
+🔍 The SonarQube Quality Gate Step
+```
+- name: SonarQube Quality Gate 
+  uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
+  env:
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  timeout-minutes: 5
+```
+### What is a Quality Gate?
+In SonarQube, a Quality Gate is a set of rules like:
+```
+❌ No new bugs
+❌ No new vulnerabilities
+✅ Code coverage ≥ 80%
+❌ No new code smells
+```
+> If your code fails any rule → Quality Gate = FAILED.
+⏱️ Wait up to 5 minutes for Quality Gate result ***If not ready in 5 minutes → ❌ job fails.***
+### Think of it like this
+> SonarQube Scan = Doctor tests && Quality Gate = Doctor decision (Fit / Not Fit)
 
 
 ## 🖥️ Install SonarQube using Docker (BEST ✅)
@@ -172,6 +193,5 @@ docker stop sonarqube
 docker restart sonarqube
 docker logs -f sonarqube
 ```
-
 
 
