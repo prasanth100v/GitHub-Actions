@@ -60,4 +60,4 @@ docker logs sonarqube
 ss -tulnp | grep 9000
 sysctl vm.max_map_count
 ```
-# ~~~~~~~~~~~~~~~~ 🌍 ~~~~~~~~~~~~~~~~
+## ~~~~~~~~~~~~~~~~ 🌍 ~~~~~~~~~~~~~~~~
