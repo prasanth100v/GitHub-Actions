@@ -2,6 +2,17 @@
 Trivy is a simple and powerful security scanner used to find vulnerabilities and security issues in your software projects.
 > It is very popular in DevOps, CI/CD pipelines, Docker, and Kubernetes environments.
 
+✅ GitHub Actions syntax:
+```
+security-check:
+  runs-on: self-hosted
+  needs: sonarqube
+  steps:
+    - uses: actions/checkout@v4
+
+    - run: trivy fs --exit-code 1 --severity HIGH,CRITICAL .
+```
+
 ## 🔍 Trivy can scan multiple targets:
 | Scan Type            | What it checks                  | Example                      |
 | -------------------- | ------------------------------- | ---------------------------- |
