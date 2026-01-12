@@ -50,7 +50,7 @@ Kubernetes
 | Tool      | Type                | Notes              |
 | --------- | ------------------- | ------------------ |
 | Trivy     | All-in-one scanner  | Very simple & fast |
-| SonarQube | Code quality + SAST | Needs server       |
+| SonarQube | Code quality + SAST (Static Application Security Testing) | Needs server   |
 
 ✅ One-line Summary
 > Trivy is a security scanner that finds vulnerabilities in your code, containers, and infrastructure — and can stop insecure builds automatically.
