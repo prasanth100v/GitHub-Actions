@@ -1,94 +1,132 @@
 # SonarQube
-7️⃣ SonarQube Job in GitHub Actions
+ SonarQube Job in GitHub Actions Reactjs
 ```
-sonarqube:
-  runs-on: self-hosted
-  needs: build
+ sonarqube:
+    runs-on: self-hosted
+    needs: build
 
-  steps:
-    - uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: SonarQube Scan
-      run: |
-        sonar-scanner \
-        -Dsonar.projectKey=my-react-project \
-        -Dsonar.sources=src \
-        -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-        -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
-        -Dsonar.qualitygate.wait=true
-```
-
-
-## 1️⃣ Install SonarQube Server (Docker – Recommended && Docker alredy installed)
-▶️ Run SonarQube using Docker
-```
-docker run -d \
-  --name sonarqube \
-  -p 9000:9000 \
-  sonarqube:lts
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: |
+            -Dsonar.projectKey=vite-react-app
+            -Dsonar.projectName=Vite_React_App
+            -Dsonar.sources=src
+            -Dsonar.exclusions=**/node_modules/**,**/dist/**
+            -Dsonar.sourceEncoding=UTF-8
 ```
 
-## 2️⃣ Create SonarQube Project
-➕ Steps in SonarQube UI
-> Login to SonarQube : Click Projects → Create Project → Choose Manual
-```
-📌 Project Key: my-react-project
-📌 Display Name: React CI Project
-```
-> 📌 Project Key must match: -Dsonar.projectKey=my-react-project
 
-## 3️⃣ Generate SonarQube Token (VERY IMPORTANT)
-🔐 Steps
+## 🖥️ Install SonarQube using Docker (BEST ✅)
+### 🔹 Step 1: Install Docker (Ubuntu)
 ```
-Click Profile (top-right)
-My Account → Security
-Generate Token:
-          Name: github-actions
-          Type: Global Analysis Token
-📋 Copy the token (shown only once)
+sudo apt update
+sudo apt install -y docker.io
+sudo systemctl enable docker
+sudo systemctl start docker
 ```
-## 4️⃣ Add GitHub Secrets
-Go to: ***GitHub Repo → Settings → Secrets → Actions*
-| Secret Name      | Value                     |
-| ---------------- | ------------------------- |
-| `SONAR_HOST_URL` | `http://host.docker.internal:9000` |
-| `SONAR_TOKEN`    | `<copied_token>`          |
+Verify:
+```
+docker --version
+```
 
-## 5️⃣ Install Sonar Scanner on Self-Hosted Runner
-🚨 Mandatory – GitHub runner does NOT include sonar-scanner
-### ▶️ Install Sonar Scanner
-```
-cd /opt
-sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
-sudo unzip sonar-scanner-cli-5.0.1.3006-linux.zip
-sudo mv sonar-scanner-5.0.1.3006-linux sonar-scanner
-```
-## ▶️ Add to PATH
-```
-echo 'export PATH=$PATH:/opt/sonar-scanner/bin' | sudo tee -a /etc/profile
-source /etc/profile
-```
-✅ Verify
-```
-sonar-scanner --version
-```
-## 6️⃣ Required Linux Kernel Settings (IMPORTANT)
-SonarQube needs this setting:
+### 🔹 Step 2: Increase Linux Memory Limit (MANDATORY)
+> SonarQube will NOT start without this.
 ```
 sudo sysctl -w vm.max_map_count=262144
 ```
 Make it permanent:
 ```
 echo "vm.max_map_count=262144" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+```
+Verify:
+```
+sysctl vm.max_map_count
 ```
 
+## 🔹 Step 3: Create SonarQube Directories
+```
+mkdir -p ~/sonarqube/{data,logs,extensions}
+```
+## 🔹 Step 4: Run SonarQube Container
+```
+docker run -d \
+  --name sonarqube \
+  -p 9000:9000 \
+  -v ~/sonarqube/data:/opt/sonarqube/data \
+  -v ~/sonarqube/logs:/opt/sonarqube/logs \
+  -v ~/sonarqube/extensions:/opt/sonarqube/extensions \
+  sonarqube:lts
+```
+Check status:
+```
+docker ps
+docker logs sonarqube
+```
+
+## 🌐 Access SonarQube UI
+Wait 1–2 minutes ⏳
+> (SonarQube is heavy — it does NOT start instantly)
+Open browser:
+```
+http://localhost:9000/
+```
+Default login:
+```
+Username: admin
+Password: admin
+```
+
+# Add GitHub Secrets
+### Find ubuntu2 IP address On ubuntu2, run:
+```
+ip a
+```
+👉 Your IP = 10.0.2.15 (example)
+
+### Create SONAR_TOKEN
+🔐 Steps
+```
+Open SonarQube in Browser & Login as Admin
+Click Profile (top-right)
+My Account → Security
+Generate Token:
+          Name: github-actions
+          Type: use 🔑 User Token (specific SonarQube user account) OR 🌍 Global Analysis Token (for system-level automation)
+          Expires in : No expiration (recommended)
+📋 Copy the token (⚠️ shown only once)
+```
+
+
+Go to: ***GitHub Repo → Settings → Secrets → Actions*
+| Secret Name      | Value                     |
+| ---------------- | ------------------------- |
+| `SONAR_HOST_URL` | `http://http://10.0.2.15:9000` |
+| `SONAR_TOKEN`    | `squ_e478aeace8dc7c9785d6940aed55c9232e1f34f8  <copied_token>`          |
+
+
+## (Optional but recommended) Verify from host Linux ubuntu2:
+```
+curl http://10.0.2.15:9000/api/system/status
+```
+> Expected: {"status":"UP"}
+
+****************Job run in GitHub Actions****************
 
 
 # Access SonarQube from Browser
 You already have SonarQube running correctly inside Docker 👍
 > The only thing left is how to access it from your browser when your Ubuntu VM uses VirtualBox NAT.
 
-## ✅ STEP 1: Add Port Forwarding in VirtualBox
+## ✅ Add Port Forwarding in VirtualBox
 ```
 📌Power OFF your Ubuntu VM
 Open VirtualBox
@@ -109,34 +147,7 @@ Guest Port	9000
 ```
 Start the VM
 
-
-## ✅ STEP 2: Fix vm.max_map_count (MANDATORY) && Verify:
-```
-sudo sysctl -w vm.max_map_count=262144
-sysctl vm.max_map_count
-```
-## 🔄 STEP 3: Restart SonarQube Container
-```
-docker restart sonarqube
-```
-
-Wait 1–2 minutes ⏳
-> (SonarQube is heavy — it does NOT start instantly)
-
-## 🧪 STEP 4: Test Again (VERY IMPORTANT)
-
-Inside Ubuntu VM:
-```
-curl http://localhost:9000
-```
-✅ If you see HTML output, SonarQube is now working.
-
-## 🌍 STEP 5: Access from Windows (NAT Mode)
-After this works inside VM, open browser on Windows host:
-```
-http://localhost:9000
-```
-(Default login: admin / admin)
+## ~~~~~~~~~~~~~~~~~~~~ 🌍 ~~~~~~~~~~~~~~~~~~~
 
 ✅ Quick Diagnostic Commands for sonarqube
 ```
@@ -145,4 +156,14 @@ docker logs sonarqube
 ss -tulnp | grep 9000
 sysctl vm.max_map_count
 ```
-## ~~~~~~~~~~~~~~~~~~~~ 🌍 ~~~~~~~~~~~~~~~~~~~
+
+🧰 Common Commands
+```
+docker start sonarqube
+docker stop sonarqube
+docker restart sonarqube
+docker logs -f sonarqube
+```
+
+
+
