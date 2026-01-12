@@ -51,7 +51,7 @@ Generate Token:
 Go to: ***GitHub Repo → Settings → Secrets → Actions*
 | Secret Name      | Value                     |
 | ---------------- | ------------------------- |
-| `SONAR_HOST_URL` | `http://<SERVER-IP>:9000` |
+| `SONAR_HOST_URL` | `http://host.docker.internal:9000` |
 | `SONAR_TOKEN`    | `<copied_token>`          |
 
 ## 5️⃣ Install Sonar Scanner on Self-Hosted Runner
