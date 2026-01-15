@@ -37,3 +37,18 @@ Repo → Settings → Actions → Runners
 You should see: ● ubuntu-runner (Idle)
 ```
 
+# Optional
+## Check & enable Docker service
+```
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo systemctl status docker
+```
+## start minikube 
+```
+minikube start
+```
+## start sonarqube
+```
+docker start sonarqube
+```
