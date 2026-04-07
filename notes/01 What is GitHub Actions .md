@@ -1,4 +1,4 @@
-## 🚀 1. What is GitHub Actions ?
+## 🚀 What is GitHub Actions ?
   
   * GitHub Actions is a powerful `CI/CD` (Continuous Integration/Continuous Deployment) platform integrated into GitHub.
   * That automates workflows to `build`, `test`, and `deploy` code directly from the repository.
@@ -8,7 +8,7 @@
 
 ---
 
-## ⚙️ 2. What is the difference between a job and step in GitHub Actions?
+## ⚙️ What is the difference between a job and step in GitHub Actions?
 | 🧩 Concept | 💡 Description                                           |
 | ---------- | --------------------------------------------------------- |
 | 🧩 Job     | 🖥️ Collection of steps that run on the same runner       |
@@ -29,7 +29,7 @@ jobs:
 
 ---
 
-## 🔔 3. How do you trigger a GitHub Actions workflow manually and automatically?
+## 🔔 How do you trigger a GitHub Actions workflow manually and automatically?
 ### ⚙️ GitHub Actions Triggers
 | 🧩 Trigger Type | 📌 Method                  | 💡 Description                |
 | --------------- | -------------------------- | ----------------------------- |
@@ -40,7 +40,7 @@ jobs:
 
 ---
 
-## 🖥️ 4. What are runners? What’s the difference between hosted and self-hosted runners?
+## 🖥️ What are runners? What’s the difference between hosted and self-hosted runners?
 
  * Runners are the environments where jobs execute.
  * ☁️ GitHub provides
@@ -49,7 +49,7 @@ jobs:
 
 ---
 
-## 🔐 5. How do you pass secrets in GitHub Actions?
+## 🔐 How do you pass secrets in GitHub Actions?
 
  * I use `GitHub Secrets` to securely store credentials and access them in workflows
  * ⚙️ Define secrets under `Repo → Settings → Secrets`
@@ -65,7 +65,7 @@ jobs:
 
 ---
 
-## 📦 6. What is `actions/checkout@v3` and why is it required?
+## 📦 What is `actions/checkout@v3` and why is it required?
 
  * This is a standard action to `clone your repo` into the runner.
  * ⚠️ Without it, your workflow `won’t have access` to your project files.
@@ -73,7 +73,7 @@ jobs:
 
 ---
 
-## 🧪 7. What is matrix strategy in GitHub Actions?
+## 🧪 What is matrix strategy in GitHub Actions?
 
  * Run jobs in parallel across different environments (e.g., `multiple Node.js versions`, `OS`, etc.).
  * ⚡ `Matrix strategy` = test across multiple environments easily.
@@ -129,7 +129,7 @@ jobs:
 
 ---
 
-## ⚖️ 10. What is the difference between run and uses in steps?
+## ⚖️ What is the difference between run and uses in steps?
 | 🧩 Keyword | 💡 Purpose                                         |
 | ---------- | --------------------------------------------------- |
 | 🟢 `run`   | 🖥️ Execute shell commands                          |
