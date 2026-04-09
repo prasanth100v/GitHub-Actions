@@ -14,7 +14,7 @@
 
 ### 🧩 Step 1: Terraform Code in Repo
 It has Terraform code to create an S3 bucket  
-```
+```yaml
 resource "aws_s3_bucket" "demo" {
   bucket = "my-gitops-bucket"
 }
@@ -22,12 +22,12 @@ resource "aws_s3_bucket" "demo" {
 
 ### 🔐 Step 2: Add AWS credentials to GitHub Secrets  
  * In GitHub repo → Settings → Secrets and variables → Actions → Add:
-     * 🔑 AWS_ACCESS_KEY_ID
-     * 🔑 AWS_SECRET_ACCESS_KEY  
+     * 🔑 `AWS_ACCESS_KEY_ID`
+     * 🔑 `AWS_SECRET_ACCESS_KEY`
 
 ### ⚙️ Step 3: Create GitHub Actions Workflow  
 In your repo, create this file : 📁 `.github/workflows/terraform.yml  `
-```
+```yaml
 name: Terraform GitOps S3  
 
 on:  
@@ -92,11 +92,14 @@ jobs:
 ---
       
 # 🌈🚀 Terraform CI/CD Workflow using GitHub Actions
-  * 📌 Runs `terraform plan` on every pull request targeting the `main` branch.
-  * 📌 Runs `terraform apply` only when code is pushed to `main` (i.e., after a PR merge).
-  * 🔐 Uses AWS OIDC authentication (no static credentials)
+  * I implement `GitOps` by storing Terraform code in `GitHub` and using `GitHub Actions` to automate deployments.
+  * When a pull request is created, Terraform plan runs for `review`, and after `approval and merge`, Terraform apply is triggered.
+  * This ensures `version control`, `automation`, and `safe infrastructure` changes.
+      * 📌 Runs `terraform plan` on every pull request targeting the `main` branch.
+      * 📌 Runs `terraform apply` only when code is pushed to `main` (i.e., after a PR merge).
+      * 🔐 Uses AWS OIDC authentication (no static credentials)
 
-``` 
+```yaml
 name: Terraform CI/CD
 
 on:
@@ -110,7 +113,7 @@ permissions:
   contents: read
 
 env:
-  TF_PLUGIN_CACHE_DIR: ~/.terraform.d/plugin-cache 
+  TF_PLUGIN_CACHE_DIR: ~/.terraform.d/plugin-cache       # 📝 Store downloaded providers/plugins in this directory and reuse them in future runs.
 
 jobs:
   terraform:
@@ -180,20 +183,15 @@ jobs:
 
 ## 🧩 What are composite actions in GitHub Actions? When would you use them?
 
-Composite actions are custom reusable workflows that group multiple steps into a single action.  
-🔁 You can define your own custom logic once and reuse it across different workflows.
-
----
-
-## ❓ Use when:  
-- 🔄 You want to avoid repeating the same steps in multiple workflows.  
-- 🌍 You want to share logic across repos.  
-
----
+ * Composite actions are `custom reusable workflows` that group `multiple steps` into a `single action`.
+ * 🔁 You can define your `own custom logic` once and `reuse` it across different `workflows`.
+ * ❓ Use when:
+     * 🔄 You want to avoid `repeating the same steps` in multiple workflows.
+     * 🌍 You want to `share logic` across repos.  
 
 ## 📄 Example:
-
-# .github/actions/setup-python/action.yml
+  # 📁 `.github/actions/setup-python/action.yml`
+```YAML
 name: Setup Python Project  
 
 runs:  
@@ -204,18 +202,25 @@ runs:
       with:  
         python-version: "3.10"  
     - run: pip install -r requirements.txt  
-
----
+```
 
 ## 🔁 Then reuse it in your workflow:
-
+```YAML
 jobs:  
   setup:  
     runs-on: ubuntu-latest  
     steps:  
       - uses: ./.github/actions/setup-python  
-
----
+```
 
 ## 💡 Bonus Interview Tip:  
-Composite actions don’t support runs-on, so they inherit the runner from the calling workflow.  
+Composite actions `don’t support runs-on`, Use runner from the calling workflow.  
+
+
+### 🏁 Final Summary
+
+ * ✨ GitOps → Git as source of truth
+ * ✨ GitHub Actions → Automation engine
+ * ✨ Terraform → Infra provisioning
+ * ✨ Composite Actions → Reusability
+
