@@ -109,6 +109,9 @@ permissions:
   id-token: write                            # 🔐 Required for AWS OIDC
   contents: read
 
+env:
+  TF_PLUGIN_CACHE_DIR: ~/.terraform.d/plugin-cache 
+
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -120,13 +123,15 @@ jobs:
       - name: Setup Terraform                              # ⚙️ Setup specific version of Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.5.0                         # 📌 Version pinned
+          terraform_version: 1.5.0                         # 📌 Version pinned                
 
-      - name: Cache Terraform                    # Add Terraform Version Cache (Performance Boost 🚀 & Speeds up provider/plugin downloads )
+      - name: Cache Terraform Plugins 🚀               # Add Terraform Version Cache (Performance Boost 🚀 & Speeds up provider/plugin downloads )
         uses: actions/cache@v3
         with:
-          path: ~/.terraform
+          path: ~/.terraform.d/plugin-cache
           key: ${{ runner.os }}-terraform-${{ hashFiles('**/*.tf') }}
+          restore-keys: |
+            ${{ runner.os }}-terraform-
 
       - name: Configure AWS Credentials (OIDC)                                      # 🔐 Authenticate to AWS using OpenID Connect (OIDC) – no hardcoded secrets   
         uses: aws-actions/configure-aws-credentials@v4
@@ -159,6 +164,17 @@ jobs:
   * This workflow follows GitOps:
       * 👨‍💻 Developer creates `PR` → Preview infra changes
       * ✅ Merge to main → `Deploy infra` automatically
+
+## Optinal 
+```yaml
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: .   # 🔁 Change if using subfolder like ./infra
+```
 
 ---
 
