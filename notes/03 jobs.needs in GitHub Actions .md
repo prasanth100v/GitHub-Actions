@@ -8,7 +8,7 @@
 ## 📄 Real-Time Example:
 
 I use `needs` to define dependencies between jobs, ensuring that steps like `deployment` only run after successful `build and test stages` .
-```
+```yaml
 jobs:
 
   build:
@@ -51,7 +51,7 @@ jobs:
 | 🟣 `with`  | ⚙️ Provide `inputs/config` to the action |
 
 ## 📄 Example:  
-```
+```yaml
 - run: echo "Hello"  
 - uses: actions/checkout@v3  
 - with: python-version: 3.9  
