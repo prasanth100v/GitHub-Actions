@@ -187,7 +187,8 @@ jobs:
  * 🔁 You can define your `own custom logic` once and `reuse` it across different `workflows`.
  * ❓ Use when:
      * 🔄 You want to avoid `repeating the same steps` in multiple workflows.
-     * 🌍 You want to `share logic` across repos.  
+     * 🌍 You want to `share logic` across repos.
+     * ✨ I want to simplify workflows and make them `cleaner` and `more modular`.  
 
 ## 📄 Example:
   # 📁 `.github/actions/setup-python/action.yml`
@@ -216,6 +217,30 @@ jobs:
 ## 💡 Bonus Interview Tip:  
 Composite actions `don’t support runs-on`, Use runner from the calling workflow.  
 
+
+---
+
+# ⚡ How to Cache Dependencies in GitHub Actions ?
+## 🚀 What is Caching?
+  * 👉 Save `dependencies` to avoid reinstalling every time
+  * Caching is used to speed up `GitHub workflows` by saving files like package dependencies so they don’t have to be reinstalled every time a workflow runs.
+  * 📦 Use actions/cache to store and reuse dependencies (like `npm modules`, `Python packages`).
+  * ❓ Why:
+      * 🚀 Speeds up build time
+      * 📉 Avoids re-downloading on every run  
+
+## Terraform Version Cache 
+```
+      - name: Cache Terraform Plugins 🚀               # Add Terraform Version Cache (Performance Boost 🚀 & Speeds up provider/plugin downloads )
+        uses: actions/cache@v3
+        with:
+          path: ~/.terraform.d/plugin-cache
+          key: ${{ runner.os }}-terraform-${{ hashFiles('**/*.tf') }}
+          restore-keys: |
+            ${{ runner.os }}-terraform- 
+```
+
+---
 
 ### 🏁 Final Summary
 
