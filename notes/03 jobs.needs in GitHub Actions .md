@@ -31,14 +31,14 @@ jobs:
 
 ## 📌 In this case:
 
-  - ⛔ test won’t run unless build passes → needs: build  
-  - ✅ deploy won’t run unless both build and test succeed → needs: [build, test]  
+   - ⛔ test won’t run unless build passes → needs: build  
+   - ✅ deploy won’t run unless both build and test succeed → needs: [build, test]  
 
 ## 💡 Why It’s Useful:
 
-  * 🧩 Helps organize multi-step `CI/CD` pipelines
-  * 🚫 Prevents unnecessary `job execution` if dependencies fail
-  * ⚡ Enables `parallel` or `conditional workflows` 
+   * 🧩 Helps organize multi-step `CI/CD` pipelines
+   * 🚫 Prevents unnecessary `job execution` if dependencies fail
+   * ⚡ Enables `parallel` or `conditional workflows` 
 
 ---
 
@@ -68,24 +68,24 @@ jobs:
 
 
 ## 🌍 How would you manage deployments across different environments (dev, staging, prod)?
-Use `environment-specific jobs` or `matrices`, with `manual approval` for production.
+   Use `environment-specific jobs` or `matrices`, with `manual approval` for production.
 
 
 ## ☁️ You want to deploy to AWS securely from GitHub Actions. How?
-Use OIDC (`OpenID Connect`) with IAM roles (`IRSA`) to give temporary credentials to GitHub instead of storing `long-term` AWS credentials.
+   Use OIDC (`OpenID Connect`) with IAM roles (`IRSA`) to give temporary credentials to GitHub instead of storing `long-term` AWS credentials.
 
 
 ## 🔑 How does GitHub Actions authenticate Terraform to AWS?
-By using OIDC with the `aws-actions/configure-aws-credentials` action. (`OIDC + IAM Role`)
+   By using OIDC with the `aws-actions/configure-aws-credentials` action. (`OIDC + IAM Role`)
 
 
 ## 🧹 Why use terraform fmt and validate in CI?
-  * ✅ To Ensure `consistent` formatting
-  * 🛠️ Catch `syntax errors` early
+   * ✅ To Ensure `consistent` formatting
+   * 🛠️ Catch `syntax errors` early
 
 
 ## 📦 What is `uses` in GitHub Actions?
-  It refers to a `pre-built action` or `reusable` component.
+   It refers to a `pre-built action` or `reusable` component.
 
 
 ## 🔒 How do you handle secrets safely in a GitHub Actions pipeline?
