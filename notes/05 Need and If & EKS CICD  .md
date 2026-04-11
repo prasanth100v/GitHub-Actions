@@ -65,7 +65,7 @@ deploy-prod:
 
 # 📄 Example Workflow
 ## 🚀 CI/CD Pipeline to Deploy into Amazon EKS
-```
+```yaml
 name: CI/CD to EKS
 
 on:
