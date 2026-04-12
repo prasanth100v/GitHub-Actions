@@ -27,7 +27,7 @@ deploy-prod:
     path: dist/
 ```
 ### 📥 Download Artifact In another job :
-```
+```yaml
 - uses: actions/download-artifact@v3
   with:
     name: build
@@ -157,7 +157,7 @@ jobs:
 
 ## ⚠️ What’s the use of `continue-on-error` in a GitHub Action step?
   🚀 It allows the workflow to continue even if a step fails.
-```
+```yaml
 - name: Run optional lint  
   run: npm run lint  
   continue-on-error: true  
