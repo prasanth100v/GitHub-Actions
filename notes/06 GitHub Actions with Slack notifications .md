@@ -10,7 +10,7 @@
   * In GitHub Actions, you can send Slack notifications for both `success and failure` by using conditions with `if:`.
 
 ### ✅ On success
-```
+```yaml
 - name: Notify Slack on success  
   if: success()  
   uses: rtCamp/action-slack-notify@v2  
@@ -20,7 +20,7 @@
 ```
 
 ### ❌ On failure
-```
+```yaml
 - name: Notify Slack on failure  
   if: failure()  
   uses: rtCamp/action-slack-notify@v2  
