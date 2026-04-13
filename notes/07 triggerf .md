@@ -45,7 +45,7 @@
  * It helps standardize the runtime environment for `builds` and `tests`.
 
 ### 🧾 Example:
-```
+```yaml
 jobs:  
   test:  
     runs-on: ubuntu-latest  
@@ -67,7 +67,7 @@ jobs:
      * With `cancel-in-progress: true`, we could automatically cancel outdated runs and keep CI/CD pipelines `efficient`, especially for production pipelines.
 
 ## 🧾 Example:
-```
+```yaml
 concurrency:  
   group: production-${{ github.ref }}  
   cancel-in-progress: true  
