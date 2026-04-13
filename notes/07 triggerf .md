@@ -8,14 +8,14 @@
 | ------------------------- | ------------------------------------------- | ------------------------------------------------------- | -------------------------------- |
 | 📤 **push**               | on:<br>push:<br> branches: [`main`]         | 🚀 When code is pushed directly to `main` branch       | 🚀 Auto deploy after code merge  |
 | 🔀 **pull_request**       | on:<br> pull_request:<br> branches: [`main`] | 🔍 When PR is opened/updated/reopened targeting `main` | ✅ Code validation before merge |
-| 🖱️ **workflow_dispatch** | on:<br> workflow_dispatch:                    | ▶️ Manually triggered via **Run workflow** button       | 🎯 Manual deploy/testing       |
-| ⏰ **schedule**          | on:<br> schedule:<br> - cron: "0 3 * * *"`    | 🌙 Runs at fixed time (cron schedule)                  | 📊 Nightly jobs, backups       |
+| 🖱️ **workflow_dispatch** | on:<br> `workflow_dispatch:`                  | ▶️ Manually triggered via **Run workflow** button       | 🎯 Manual deploy/testing       |
+| ⏰ **schedule**          | on:<br> schedule:<br> - `cron: "0 3 * * *"`    | 🌙 Runs at fixed time (cron schedule)                  | 📊 Nightly jobs, backups       |
 
 
 ### 🔁 Multiple Triggers Combined
 | 🔔 Trigger Combination | 🧾 Syntax                                                                                          | 📖 Behavior                                                         |
 | ---------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| 📤 + 🔀 + 🖱️          | on:<br>  push:<br>   branches: [main]<br>  pull_request:<br>   branches: [main]<br>  workflow_dispatch: | Runs on push to `main`, pull requests to `main`, and manual trigger |
+| 📤 + 🔀 + 🖱️          | on:<br>  push:<br>   branches: [`main`]<br>  pull_request:<br>   branches: [`main`]<br>  `workflow_dispatch:` | Runs on push to `main`, pull requests to `main`, and manual trigger |
 
 
 ---
