@@ -27,15 +27,7 @@
 
 ---
 
-- 🧩 A composite action bundles multiple steps in one action, making it reusable.  
-- 🐞 To debug GitHub Actions workflows, I start by checking the step-by-step logs in the ‘Actions’ tab. Each step has detailed output, and failed steps are clearly marked.  
-- ⚡ The difference between actions/checkout@v2 and actions/checkout@v3 lies in improvements in performance, security, and new features.  
-- 🌐 GitHub Actions provides native GitHub integration, reusable workflows, strong community support, and flexible automation.  
-- 🔒 GitHub masks secrets automatically in logs. If a secret is printed, it is replaced with ***.  
-
-
-🧩 GitHub Actions Concepts
-
+### 🧩 GitHub Actions Concepts
 | 🧩 Topic                       | 📖 Explanation                                                                                                                                                  |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 🧩 **Composite Action**        | A composite action bundles multiple steps into a single reusable action. 👉 Helps avoid repeating the same steps across workflows and improves maintainability. |
@@ -46,12 +38,14 @@
 
 ---
 
-# 🐳 What is the purpose of job.container in GitHub Actions?
+## 🐳 What is the purpose of `job.container` in GitHub Actions?
 
-The job.container keyword in GitHub Actions allows you to run a job inside a Docker container, instead of the default GitHub-hosted runner environment. It helps standardize the runtime environment for builds and tests.
+ * 🚀 `Runs job inside a Docker container`
+ * The `job.container` keyword in GitHub Actions allows you to run a `job` inside a Docker container, instead of the default GitHub-hosted runner environment.
+ * It helps standardize the runtime environment for `builds` and `tests`.
 
 ### 🧾 Example:
-
+```
 jobs:  
   test:  
     runs-on: ubuntu-latest  
@@ -59,20 +53,29 @@ jobs:
       image: node:18  
     steps:  
       - uses: actions/checkout@v3  
-      - run: node -v   # runs inside the node:18 container  
+      - run: node -v                          # runs inside the node:18 container  
+```
 
 ---
 
 # 🔄 What is concurrency in GitHub Actions?
 
-concurrency is a GitHub Actions feature used to ensure that only one job or workflow using the same concurrency group runs at a time. It helps avoid duplicate runs, cancel in-progress jobs, and save resources.
-
-## 📌 Real Use Case:
-
-If you push code multiple times quickly to the same branch (main), only the latest run will proceed—previous ones are canceled. With cancel-in-progress: true, we could automatically cancel outdated runs and keep CI/CD pipelines efficient.
+ * 🚀 Controls `how many workflows` run at the same time
+ * It helps avoid `duplicate runs`, `cancel in-progress jobs`, and `save resources`.
+ * 📌 Real Use Case:
+     * If you push code `multiple times quickly` to the same branch (main), only the `latest run` will proceed—previous ones are canceled.
+     * With `cancel-in-progress: true`, we could automatically cancel outdated runs and keep CI/CD pipelines `efficient`, especially for production pipelines.
 
 ## 🧾 Example:
-
+```
 concurrency:  
   group: production-${{ github.ref }}  
   cancel-in-progress: true  
+```
+
+## 🏁 Final Summary
+
+ * ✨ on: → Trigger workflow
+ * ✨ Secrets → Secure data
+ * ✨ continue-on-error → Flexibility
+ * ✨ concurrency → Control execution
