@@ -15,6 +15,10 @@
 | ---------------------- | ------------------------------------------------------------------------------------------- ------ | --------------------------------------------------------- |
 | 📤 + 🔀 + 🖱️          | on:<br> push:<br> branches: [`main`] pull_request:<br> branches: [`main`] <br> workflow_dispatch:  | Runs on push to `main`, PRs to `main`, and manual trigger |
 
+| 🔔 Trigger Combination | 🧾 Syntax                                                                                          | 📖 Behavior                                                         |
+| ---------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| 📤 + 🔀 + 🖱️          | `yaml on:   push:     branches: [main]   pull_request:     branches: [main]   workflow_dispatch: ` | Runs on push to `main`, pull requests to `main`, and manual trigger |
+
 
 ---
 
