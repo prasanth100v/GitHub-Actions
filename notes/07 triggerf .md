@@ -11,13 +11,11 @@
 | 🖱️ **workflow_dispatch** | on:<br> workflow_dispatch:                    | ▶️ Manually triggered via **Run workflow** button       | 🎯 Manual deploy/testing       |
 | ⏰ **schedule**          | on:<br> schedule:<br> - cron: "0 3 * * *"`    | 🌙 Runs at fixed time (cron schedule)                  | 📊 Nightly jobs, backups       |
 
-| 🔔 Trigger Combination | 🧾 Syntax                                                                                         | 📖 Behavior                                               |
-| ---------------------- | ------------------------------------------------------------------------------------------- ------ | --------------------------------------------------------- |
-| 📤 + 🔀 + 🖱️          | on:<br> push:<br> branches: [`main`]<br> pull_request<br> branches: [`main`] <br> workflow_dispatch:  | Runs on push to `main`, PRs to `main`, and manual trigger |
 
+### 🔁 Multiple Triggers Combined
 | 🔔 Trigger Combination | 🧾 Syntax                                                                                          | 📖 Behavior                                                         |
 | ---------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| 📤 + 🔀 + 🖱️          | on:<br>  push:<br>   branches: [main]<br>  pull_request:<br>   branches: [main]<br>  workflow_dispatch: ` | Runs on push to `main`, pull requests to `main`, and manual trigger |
+| 📤 + 🔀 + 🖱️          | on:<br>  push:<br>   branches: [main]<br>  pull_request:<br>   branches: [main]<br>  workflow_dispatch: | Runs on push to `main`, pull requests to `main`, and manual trigger |
 
 
 ---
