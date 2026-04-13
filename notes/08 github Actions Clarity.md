@@ -10,7 +10,7 @@
 
 
 ## 🧾 Syntax Example:
-```
+```yaml
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
  * 👉 Run workflow only when specific folder changes (`/backend`).
  * 🚀 How will you handle this?
       * Use the `paths filter` to limit triggering the workflow:
-```
+```yaml
 on:
   push:
     paths:
