@@ -17,7 +17,7 @@
 
 | 🔔 Trigger Combination | 🧾 Syntax                                                                                          | 📖 Behavior                                                         |
 | ---------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| 📤 + 🔀 + 🖱️          | on:<br>  push:<br>   branches: [main]   pull_request:<br>   branches: [main]<br>  workflow_dispatch: ` | Runs on push to `main`, pull requests to `main`, and manual trigger |
+| 📤 + 🔀 + 🖱️          | on:<br>  push:<br>   branches: [main]<br>  pull_request:<br>   branches: [main]<br>  workflow_dispatch: ` | Runs on push to `main`, pull requests to `main`, and manual trigger |
 
 
 ---
