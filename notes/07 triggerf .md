@@ -20,21 +20,29 @@
 
 ---
 
-# ⚠️ continue-on-error: true in GitHub Actions
-
-continue-on-error: true allows a step or job to continue execution even if the previous step/job fails.
-
-❌ Without continue-on-error: true: If the workflow stops there and won’t run.  
-
-⚠️ Be Careful: Use it only when failure is acceptable. It can hide problems if overused.
+# ⚠️ `continue-on-error: true` in GitHub Actions
+  * `continue-on-error: true` allows a step or job to continue execution even if the previous `step/job` fails.
+  * ❌ Without `continue-on-error: true:` If the workflow stops there and won’t run.
+  * ⚠️ Be Careful: Use it only `when failure is acceptable`. It can hide problems if overused.
 
 ---
 
 - 🧩 A composite action bundles multiple steps in one action, making it reusable.  
-- 🐞 To debug GitHub Actions workflows, I start by checking the step-by-step logs in the ‘Actions’ tab. Each step has detailed output, and failed steps are clearly marked. Use echo or printenv to print variable values. Enable debug logging with ACTIONS_STEP_DEBUG=true.  
+- 🐞 To debug GitHub Actions workflows, I start by checking the step-by-step logs in the ‘Actions’ tab. Each step has detailed output, and failed steps are clearly marked.  
 - ⚡ The difference between actions/checkout@v2 and actions/checkout@v3 lies in improvements in performance, security, and new features.  
 - 🌐 GitHub Actions provides native GitHub integration, reusable workflows, strong community support, and flexible automation.  
 - 🔒 GitHub masks secrets automatically in logs. If a secret is printed, it is replaced with ***.  
+
+
+🧩 GitHub Actions Concepts
+
+| 🧩 Topic                       | 📖 Explanation                                                                                                                                                  |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🧩 **Composite Action**        | A composite action bundles multiple steps into a single reusable action. 👉 Helps avoid repeating the same steps across workflows and improves maintainability. |
+| 🐞 **Debugging Workflows**     | To debug, check logs in the **Actions tab**. 👉 Each step shows detailed output, and failed steps are clearly highlighted, making issues easier to identify.    |
+| ⚡ **checkout@v2 vs v3**        | The difference between `actions/checkout@v2` and `v3` includes improved performance, better security, and support for newer features in v3.                     |
+| 🌐 **GitHub Actions Benefits** | Provides native integration with GitHub, reusable workflows, strong community support, and flexible automation for CI/CD pipelines.                             |
+| 🔒 **Secrets Handling**        | GitHub automatically masks secrets in logs. 👉 If a secret appears in output, it is replaced with `***` to prevent exposure.                                    |
 
 ---
 
