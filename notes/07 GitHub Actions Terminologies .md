@@ -5,7 +5,7 @@
  * That runs based on triggers like `push` or `pull requests`, It tells GitHub what to do and when.
 
 ### 🧾 Example:
-```
+```yaml
 name: Build and Deploy  
 on: push  
 ```
@@ -26,7 +26,7 @@ on: push
 | 🖱️ `workflow_dispatch`   | ▶️ Manual trigger from GitHub UI                             |
 
 ### 🧾 Example:
-```
+```yaml
 on:  
   push:  
     branches:              # 🎯 Run CI when code is pushed to the main branch.
@@ -41,7 +41,7 @@ on:
  * You can run multiple jobs in `parallel` or `sequentially`.
 
 ### 🧾 Example:
-```
+```yaml
 jobs:  
   build:  
     runs-on: ubuntu-latest  
@@ -63,7 +63,7 @@ One job for build, another for test, and another for deploy. For example:
 * Steps are run one after another.
 
 ### 🧾 Example:
-```
+```yaml
 steps:  
   - name: Checkout Code  
     uses: actions/checkout@v3  
@@ -89,7 +89,7 @@ steps:
 | 🖥️ Self-hosted    | 🛠️ Runs on your own server/infrastructure   |
 
 ### 🧾 Example:
-```
+```yaml
 runs-on: ubuntu-latest      # 🎯 Use `ubuntu-latest` to run Linux shell scripts.
 ```
 
@@ -101,7 +101,7 @@ runs-on: ubuntu-latest      # 🎯 Use `ubuntu-latest` to run Linux shell script
   * Used with `uses:` keyword.
 
 ### 🧾 Example:
-```
+```yaml
 uses: actions/checkout@v3           # 🔄 This action checks out your GitHub repo code.  
 
 uses: actions/setup-node@v3         # ⚙️ installs Node.js. 
