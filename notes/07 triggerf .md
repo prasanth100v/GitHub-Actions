@@ -6,7 +6,7 @@
 #### 👉 push 📤 | PR 🔀 | manual ▶️ | cron ⏰
 | 🔔 Trigger                | 🧾 Syntax                            | 📖 When It Runs                                        | 💡 Use Case                    |
 | ------------------------- | ------------------------------------ | ------------------------------------------------------- | -------------------------------- |
-| 📤 **push**               | `on: push: branches: [main]`         | 🚀 When code is pushed directly to `main` branch       | 🚀 Auto deploy after code merge  |
+| 📤 **push**               | `on:<br> push: branches:<br>  [main]`         | 🚀 When code is pushed directly to `main` branch       | 🚀 Auto deploy after code merge  |
 | 🔀 **pull_request**       | `on: pull_request: branches: [main]` | 🔍 When PR is opened/updated/reopened targeting `main` | ✅ Code validation before merge |
 | 🖱️ **workflow_dispatch** | `on: workflow_dispatch:`             | ▶️ Manually triggered via **Run workflow** button       | 🎯 Manual deploy/testing       |
 | ⏰ **schedule**            | `on: schedule: - cron: "0 3 * * *"`  | 🌙 Runs at fixed time (cron schedule)                  | 📊 Nightly jobs, backups       |
