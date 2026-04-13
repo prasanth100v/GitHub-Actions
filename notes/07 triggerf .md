@@ -1,87 +1,20 @@
 # 🚀 What is on: in GitHub Actions?
+ * The `on:` keyword tells GitHub when to run your workflow.
+ * Think of it as the trigger for your `CI/CD pipeline`.
 
-The on: keyword tells GitHub when to run your workflow.  
-Think of it as the trigger for your CI/CD pipeline.
+### 🔔 GitHub Actions Triggers
+#### 👉 push 📤 | PR 🔀 | manual ▶️ | cron ⏰
+| 🔔 Trigger                | 🧾 Syntax                            | 📖 When It Runs                                        | 💡 Use Case                    |
+| ------------------------- | ------------------------------------ | ------------------------------------------------------- | -------------------------------- |
+| 📤 **push**               | `on: push: branches: [main]`         | 🚀 When code is pushed directly to `main` branch       | 🚀 Auto deploy after code merge  |
+| 🔀 **pull_request**       | `on: pull_request: branches: [main]` | 🔍 When PR is opened/updated/reopened targeting `main` | ✅ Code validation before merge |
+| 🖱️ **workflow_dispatch** | `on: workflow_dispatch:`             | ▶️ Manually triggered via **Run workflow** button       | 🎯 Manual deploy/testing       |
+| ⏰ **schedule**            | `on: schedule: - cron: "0 3 * * *"`  | 🌙 Runs at fixed time (cron schedule)                  | 📊 Nightly jobs, backups       |
 
----
+| 🔔 Trigger Combination | 🧾 Syntax                                                                            | 📖 Behavior                                               |
+| ---------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------- |
+| 📤 + 🔀 + 🖱️          | `yaml on: push: branches: [main] pull_request: branches: [main] workflow_dispatch: ` | Runs on push to `main`, PRs to `main`, and manual trigger |
 
-## 🔔 Common Triggers
-
-- 📤 push – When someone pushes code directly to the main branch.  
-- 🔀 pull_request – When someone opens, updates, or reopens a pull request into the main branch.  
-- 🖱️ workflow_dispatch – When you run the workflow manually (button)  
-- ⏰ schedule – Runs at specific time like cron (e.g., nightly)  
-
----
-
-## 📤 Push Trigger
-
-on:  
-  push:  
-    branches: [main]  
-
-Runs when code is pushed to main branch.
-
----
-
-## 🔀 Pull Request Trigger
-
-on:  
-  pull_request:  
-    branches: [main]  
-
-Runs when someone opens or updates a pull request targeting main.
-
----
-
-Pull requests give teams a safe, controlled way to update code, improve quality, and collaborate.  
-
-It’s like saying:  
-“Here’s my work — can someone check and approve before we add it to the main Branch?”
-
----
-
-## 🖱️ Manual Trigger (workflow_dispatch)
-
-on:  
-  workflow_dispatch:  
-
-Adds a "Run workflow" button in the GitHub UI. Useful for manual deployments.
-
----
-
-## ⏰ Scheduled Trigger (like cron job)
-
-on:  
-  schedule:  
-    - cron: "0 3 * * *"   # Runs every day at 3 AM UTC  
-
-Good for backups, health checks, or daily reports.
-
----
-
-## 🔁 Multiple Triggers Together
-
-on:  
-  push:  
-    branches: [main]  
-  pull_request:  
-    branches: [main]  
-  workflow_dispatch:  
-
-This workflow runs:  
-on push to main, on pull requests to main, when triggered manually  
-
----
-
-# 🔐 Secret
-
-Encrypted environment variables stored in GitHub → Settings → Secrets.
-
-### 🧾 Example:
-
-with:  
-  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}  
 
 ---
 
