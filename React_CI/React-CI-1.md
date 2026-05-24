@@ -1,5 +1,5 @@
 # List of React-CI
-1. odeBuild + Sonarqube + Trivy + Docker build + Docker run
+1. CodeBuild + Sonarqube + Trivy + Docker build + Docker run
    
 ```yaml
 name: CICD pipeline 2 (ReactJS)
