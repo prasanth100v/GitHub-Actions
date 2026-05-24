@@ -19,7 +19,7 @@ File location → press Enter  Passphrase → optional (recommended for security
 * 👉 This creates:
    * Private key: `~/.ssh/id_ed25519` && Public key: `~/.ssh/id_ed25519.pub`
 
-## ✅ Step 3: Start SSH agent & add key
+## ✅ Step 3: Start the `SSH agent` & add your `private key`
 ```hcl
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
@@ -29,7 +29,7 @@ ssh-add ~/.ssh/id_ed25519
 ```hcl
 cat ~/.ssh/id_ed25519.pub
 ```
-📋 Copy the entire output (starts with ssh-ed25519).
+📋 Copy the entire output (starts with `ssh-ed25519`).
 
 ## ✅ Step 5: Add SSH key to GitHub
 ```hcl
