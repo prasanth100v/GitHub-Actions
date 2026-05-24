@@ -129,7 +129,7 @@ ip a
    * 📋 Copy the token (⚠️ `shown only once`)
 
 
-Go to: ***GitHub Repo → Settings → Secrets → Actions*
+### Go to: ***GitHub Repo → Settings → Secrets → Actions*
 | Secret Name      | Value                                                                  |
 | ---------------- | ---------------------------------------------------------------------- |
 | SONAR_HOST_URL | `http://http://10.0.2.15:9000`                                         |
