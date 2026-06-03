@@ -11,6 +11,7 @@ deploy-prod:
     reviewers:
       - your-team
 ```
+
 ---
 
 # 📦 How do you share artifacts between jobs?
@@ -20,14 +21,14 @@ deploy-prod:
  * `Build Job → Upload Artifact 📦 → Next Job → Download 📥 → Use`
 
 ### 📤 Upload Artifact
-```yaml
+```hcl
 - uses: actions/upload-artifact@v3
   with:
     name: build
     path: dist/
 ```
 ### 📥 Download Artifact In another job :
-```yaml
+```hcl
 - uses: actions/download-artifact@v3
   with:
     name: build
@@ -157,7 +158,7 @@ jobs:
 
 ## ⚠️ What’s the use of `continue-on-error` in a GitHub Action step?
   🚀 It allows the workflow to continue even if a step fails.
-```yaml
+```hcl
 - name: Run optional lint  
   run: npm run lint  
   continue-on-error: true  
