@@ -230,7 +230,7 @@ Composite actions `don’t support runs-on`, Use runner from the calling workflo
       * 📉 Avoids re-downloading on every run  
 
 ## Terraform Version Cache 
-```
+```hcl
       - name: Cache Terraform Plugins 🚀               # Add Terraform Version Cache (Performance Boost 🚀 & Speeds up provider/plugin downloads )
         uses: actions/cache@v3
         with:
