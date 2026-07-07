@@ -1,4 +1,4 @@
-## 🧑‍💻 DevOps Interview Verdict
+## 🧑‍💻 DevOps Interview 
  * 🔥 Modern DevOps prefers `GitHub Actions`
  * 🌿 Legacy & enterprise still use `Jenkins`
 
