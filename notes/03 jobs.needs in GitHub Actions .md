@@ -87,6 +87,7 @@ jobs:
 ## 🚀 GitHub Actions: Composite Action vs Reusable Workflow
   * 🧱 A Composite Action is used to reuse a group of steps within a job.
   * 🔄 A Reusable Workflow is used to reuse an entire workflow, including one or more jobs, runners, matrices, environments, and secrets.
+
 | 🧩 **Feature**                    | 🧱 **Composite Action**                           | 🔄 **Reusable Workflow**            |
 | --------------------------------- | ------------------------------------------------- | ----------------------------------- |
 | 🎯 **Purpose**                    | Reuse a set of **steps**                          | Reuse an entire **workflow or job** |
