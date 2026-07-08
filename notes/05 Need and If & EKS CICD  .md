@@ -36,7 +36,6 @@ deploy-prod:
 ---
 
 # 🔁 Can you run jobs sequentially or conditionally?
-
  * Yes, in GitHub Actions, we can run jobs both sequentially and conditionally.
  * ⏭️ For sequential execution, I use the `needs keyword` to define dependencies between jobs.
  * ⚡ For example, in a typical CI/CD pipeline, I run `build → test → deploy`, where each job waits for the previous one to succeed.
@@ -44,6 +43,12 @@ deploy-prod:
      * `if: github.ref == 'refs/heads/main'` 🚫 This helps prevent unwanted deployments from feature branches.
  * ⚙️ Combining `needs and if` gives us full control over job flow based on environment or event triggers.
  * 👉 I use `needs` for sequential execution and `if conditions` to control when jobs run, such as deploying only from main or staging branches.
+
+## 🚀 needs vs if in GitHub Actions
+| 🧩 **Keyword** | 🎯 **Purpose**                | 🧠 **How It Works**                                                    | 💡 **Example**                       |
+| -------------- | ----------------------------- | ----------------------------------------------------------------------- | ------------------------------------- |
+| 🔗 **`needs`** | Control job execution order   | Makes a job wait until one or more dependent jobs complete successfully | `needs: build`                        |
+| ❓ **`if`**     | Control conditional execution | Runs a job or step only if the specified condition evaluates to `true`  | `if: github.ref == 'refs/heads/main'` |
 
 ## ✨ Optional Add-on (Real-time project):
    * 📝 In one of my projects, we had separate workflows for `develop`, `staging`, and `main`.
