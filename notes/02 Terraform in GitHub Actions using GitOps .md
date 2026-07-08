@@ -10,8 +10,9 @@
       * 👉 Use `GitHub Actions` to run Terraform automatically
 
 ## 🌍 Real-life Example: 
- Create an S3 Bucket using Terraform + GitHub Actions
-
+### Create an S3 Bucket using Terraform + GitHub Actions
+  * This GitHub Actions workflow automatically runs Terraform whenever code is pushed to the `main branch`.
+  * It initializes `Terraform`, creates an `execution plan`, and then applies the infrastructure changes to AWS.
 ### 🧩 Step 1: Terraform Code in Repo
 It has Terraform code to create an S3 bucket  
 ```yaml
@@ -41,22 +42,22 @@ jobs:
 
     steps:  
       - name: Checkout code  
-        uses: actions/checkout@v3  
+        uses: actions/checkout@v3                    # Downloads the repository code (Terraform files `main.tf`, `variables.tf`, etc.) onto the GitHub Actions runner.
 
       - name: Set up Terraform  
-        uses: hashicorp/setup-terraform@v3  
+        uses: hashicorp/setup-terraform@v3           # Installs the Terraform CLI.
 
       - name: Terraform Init  
-        run: terraform init  
+        run: terraform init                          # Initializes the working directory., Downloads required providers (for example, AWS).
 
       - name: Terraform Plan  
-        run: terraform plan  
+        run: terraform plan                          # Shows what resources will be created, updated, or destroyed.
         env:  
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}  
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}     # These credentials come from `GitHub Secrets`, so they are not hardcoded in the workflow.
 
       - name: Terraform Apply  
-        run: terraform apply -auto-approve  
+        run: terraform apply -auto-approve                                # Applies the planned infrastructure changes to AWS.
         env:  
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}  
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  
@@ -108,9 +109,9 @@ on:
   push:
     branches: [main]                         # 🟢 Trigger on direct pushes or merges to main
 
-permissions:
-  id-token: write                            # 🔐 Required for AWS OIDC
-  contents: read
+permissions:                                 # 🔐 Minimum permissions the GitHub Actions workflow needs.
+  id-token: write                            # Enables GitHub's OIDC integration so the workflow can request an identity token and assume an AWS IAM role to obtain temporary credentials.
+  contents: read                             # Allows the workflow to check out and read the repository code.
 
 env:
   TF_PLUGIN_CACHE_DIR: ~/.terraform.d/plugin-cache       # 📝 Store downloaded providers/plugins in this directory and reuse them in future runs.
