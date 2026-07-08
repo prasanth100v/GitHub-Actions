@@ -106,20 +106,19 @@ This workflow will only run if there are changes inside the `backend/ folder`.
 
 ### ⚙️ GitHub Actions: workflow_run vs workflow_call
 | 🧩 Feature       | 🔁 `workflow_run`                                 | 🧩 `workflow_call`                  |
-| ---------------- | ------------------------------------------------- | ----------------------------------- |
+| ---------------- | -------------------------------------------------- | ----------------------------------- |
 | 🎯 Purpose       | 🚀 Trigger another workflow after one finishes    | ♻️ Reuse a workflow like a function |
-| 🔄 Flow          | 👉 Sequential (Workflow A ➝ Workflow B)           | 🔁 Modular (call anytime)           |
+| 🔄 Flow          | 👉 Sequential (`Workflow A ➝ Workflow B`)        | 🔁 Modular (call anytime)           |
 | 🧠 How It Works  | 👂 Listens to completion via `workflow_run` event | 📞 Called using `workflow_call`     |
 | ⚙️ Configuration | `on: workflow_run: workflows: ["Build"]`          | `on: workflow_call:`                |
 | 📦 Use Case      | 🚀 Post-build: deploy, notify, cleanup            | 🧪 Reusable build/test workflows    |
 | 🔒 Control       | ⚠️ Limited inputs/outputs                         | ✅ Supports inputs, outputs, secrets |
-| ♻️ Reusability   | ❌ Not reusable                                    | ✅ Highly reusable                   |
-| 👥 Best For      | 🔗 Pipeline chaining (CI ➝ CD)                    | 🧱 DRY principle (reuse logic)      |
+| ♻️ Reusability   | ❌ Not reusable                                   | ✅ Highly reusable                   |
+| 👥 Best For      | 🔗 Pipeline chaining (CI ➝ CD)                   | 🧱 DRY principle (reuse logic)      |
 
 ---
 
 ## 🏁 Final Summary
-
  * ✨ fail-fast → Stop or continue matrix
  * ✨ Errors → Control flow
  * ✨ Optimization → Speed & cost
